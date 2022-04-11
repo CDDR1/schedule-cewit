@@ -23,6 +23,11 @@ header {
     gap: 3rem;
 }
 
+/* || MAIN */
+.main-content {
+    padding: 3rem 0 5rem;
+}
+
 /* || TABS */
 .schedule-tabs {
     padding: 4rem 0;
