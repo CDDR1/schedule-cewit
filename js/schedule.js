@@ -1,9 +1,7 @@
 const daysChecked = document.querySelectorAll('.checkbox');
-const timeSlots = document.querySelectorAll('.grid-hour');
 const gridItems = document.getElementsByClassName('grid-item');
 const submitButton = document.getElementById('submit-form');
 let daysPicked = [];
-let blockTakenList = [];  
 
 const player1 = {
   courseInput: document.querySelector('#courseTitle'),
@@ -27,25 +25,9 @@ function reset(){
 function emtpyInput(){
   if(player1.dropDownMenu.value === '' || player1.courseInput.value === ''){
     return true;
-  } else{
-    return false;
   }
-}
-
-function findBlock(days){
-  //if true, there is repeating time block
-  let index = 0;
-  let placement = 0;
-  for (let gridItem of gridItems){
-    if(gridItem.innerText === player1.dropDownMenu.value){
-      for (let i of days){
-        placement = index + i + 1;
-        if(gridItems[placement].innerText != ''){ // finds a repeating block
-          return true;
-        }
-      }
-      return false;
-    }
+  else{
+    return false;
   }
 }
 
@@ -58,14 +40,10 @@ submitButton.addEventListener('click', (e) => {
   e.preventDefault();
 
   // Fill in array (daysChecked) for the days chosen.
-  daysChecked.forEach((checkbox) => 
-  {
-    if (checkbox.checked) 
-    {
+  daysChecked.forEach((checkbox) =>{
+    if (checkbox.checked) {
       daysPicked.push(true);
-    } 
-    else 
-    {
+    }else{
       daysPicked.push(false);
     }
   });
@@ -75,24 +53,28 @@ submitButton.addEventListener('click', (e) => {
   for (let gridItem of gridItems){
     // checks for input
     if (emtpyInput()){
-      alert("You are missing either course name or time");
+      alert("You are missing either course name or time"); // pop up location
       break;
     }
     // finds the time block
 
     if (gridItem.innerText === player1.dropDownMenu.value) {
-      for (let i = 0; i < daysPicked.length; i++) { 
-        // finds the days picked
+      for (let i = 0; i < daysPicked.length; i++){
         placement = index + i + 1; // where the actual block is
         if (daysPicked[i]){ //daysPicked[i] findBlock(daysChecked) === false)
-          gridItems[placement].style.backgroundColor = player1.colorInput.value;
-          gridItems[placement].innerText = 
-          `${player1.courseInput.value}\n${player1.locationInput.value}\n${player1.professorInput.value}`;
+          if(gridItems[placement].innerText === '' || gridItems[placement].style === ''){
+            gridItems[placement].style.backgroundColor = player1.colorInput.value;
+            gridItems[placement].innerText = 
+            `${player1.courseInput.value}\n${player1.locationInput.value}\n${player1.professorInput.value}`;
+          }else{
+            alert("This is full."); // pop up location
+            break;
+          }
         } 
-        // end of nested if statement
       }
     }
     index++;
   }
-  reset();
+  
+  reset(); //end
 });
