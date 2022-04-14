@@ -9,6 +9,7 @@
     --primary-color: #58BC82;
     --secondary-color: #E4E4E4;
     --accent-color: #858585;
+    --popup-bg-display: none;
 }
 
 html {
@@ -89,7 +90,7 @@ button {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.465);
-    display: none;
+    display: var(--popup-bg-display);
 }
 
 .popup {
@@ -102,26 +103,42 @@ button {
     background-color: #fff;
     border-radius: 20px;
     padding: 2rem;
-    /* display: flex; */
+    display: none;
     flex-direction: column;
     justify-content: space-between;
-    display: none;
+}
+
+.show-popup {
+    display: flex;
 }
 
 .close-popup-btn {
     color: red;
     font-size: 3rem;
-    display: block;
-    text-align: end;
+    display: inline;
+    margin-left: auto;
     cursor: pointer;
+    border-radius: 20px;
+    width: 4rem;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+.close-popup-btn:hover {
+    background-color: rgba(217, 217, 217, 0.512);
+}
+
+.popup-content {
+    text-align: center;
+    font-size: 2rem;
 }
 
 .gotit-btn {
     background-color: var(--primary-color);
     color: #fff;
-    width: 25rem;
-    height: 6rem;
-    font-size: 3rem;
+    width: 17rem;
+    height: 4.5rem;
+    font-size: 2.5rem;
     border-radius: 15px;
     display: block;
     margin: 0 auto;
@@ -131,4 +148,3 @@ button {
 .gotit-btn:hover {
     opacity: 0.9;
 }
-
