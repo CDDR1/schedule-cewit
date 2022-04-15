@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONT AWESOME CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- GENERAL STYLES -->
     <link rel="stylesheet" href="./css/general-styles.css">
     <!-- CSS -->
@@ -27,6 +29,11 @@
                 <ul class="main-nav-links">
                     <li><a href="" class="main-nav-link main-nav-link-1">Info</a></li>
                     <li><a href="" class="main-nav-link main-nav-link-2 active-nav-link">Scheduler</a></li>
+                    <div class="toggle-mode-container">
+                        <i class="fa-solid fa-moon"></i>
+                        <button class="toggle-mode-btn"></button>
+                        <i class="fa-solid fa-sun"></i>
+                    </div>
                 </ul>
             </nav>
         </header>
@@ -231,6 +238,8 @@
     </div>
     <!-- JavaScript -->
     <script src="./js/schedule.js"></script>
+    <!-- VIEW MODE TOGGLE -->
+    <script src="./js/view-mode-toggle.js"></script>
 </body>
 
 </html>

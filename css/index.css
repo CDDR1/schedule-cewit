@@ -17,11 +17,61 @@ header {
 .main-nav-links {
     margin-right: 7rem;
     font-size: 1.8rem;
-    color: #939393;
     display: flex;
     align-items: center;
     gap: 3rem;
 }
+
+.main-nav-link {
+    color: var(--text-color);
+}
+
+/* || DARK/LIGHT MODE TOGGLE BUTTON */
+.toggle-mode-container {
+    position: relative;
+    width: 4.5rem;
+    height: 2rem;
+    background-color: #4A4C4B;
+    border-radius: 20rem;
+}
+
+.toggle-mode-btn {
+    position: absolute;
+    left: 0.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    height: 1.7rem;
+    width: 1.7rem;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    z-index: 2;
+    transition: margin-left 0.3s;
+}
+
+.move-toggle-btn {
+    margin-left: 2.3rem;
+}
+
+.fa-sun {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0.25rem;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
+.fa-moon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.25rem;
+    font-size: 1.4rem;
+    color: #fff;
+}
+
 
 /* || MAIN */
 .main-content {
@@ -150,6 +200,7 @@ header {
 .inputs-container {
     background-color: var(--secondary-color);
     padding-top: 2rem;
+    color: var(--text-color);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     display: flex;

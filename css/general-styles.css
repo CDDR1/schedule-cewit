@@ -9,6 +9,8 @@
     --primary-color: #58BC82;
     --secondary-color: #E4E4E4;
     --accent-color: #858585;
+    --body-bg-color: #FCFCFC;
+    --text-color: #000;
     --popup-bg-display: none;
 }
 
@@ -28,7 +30,7 @@ html {
 body {
     font-family: var(--body-font);
     font-size: 1.5rem;
-    background-color: #FCFCFC;
+    background-color: var(--body-bg-color);
 }
 
 img {
@@ -78,7 +80,7 @@ button {
 
 /* || UTILITY CLASSES */
 .active-nav-link {
-    color: #000;
+    font-weight: bold;
 }
 
 /* || POPUP */
