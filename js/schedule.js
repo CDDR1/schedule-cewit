@@ -21,7 +21,7 @@ const hidePopup = () => {
     document.querySelector('.popup').classList.remove('show-popup');
 }
 
-const showPopup = (content) => {
+const showPopup = content => {
     // Shows the popup's background
     document.querySelector(':root').style.setProperty('--popup-bg-display', 'block');
 
