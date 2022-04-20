@@ -17,9 +17,9 @@ toggleModeBtn.addEventListener('click', () => {
     else {
         darkModeOn = true;
         root.style.setProperty('--primary-color', '#117FE6');
-        root.style.setProperty('--secondary-color', '#4A4C4B')
+        root.style.setProperty('--secondary-color', '#2d2d2d')
         root.style.setProperty('--accent-color', '#fff')
-        root.style.setProperty('--body-bg-color', '#777A78')
+        root.style.setProperty('--body-bg-color', '#121212')
         root.style.setProperty('--text-color', '#fff')
     }
 });
