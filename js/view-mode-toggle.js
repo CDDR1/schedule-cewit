@@ -1,7 +1,8 @@
+const toggleModeContainer = document.querySelector('.toggle-mode-container');
 const toggleModeBtn = document.querySelector('.toggle-mode-btn');
 let darkModeOn = false;
 
-toggleModeBtn.addEventListener('click', () => {
+toggleModeContainer.addEventListener('click', () => {
     toggleModeBtn.classList.toggle('move-toggle-btn');
 
     const root = document.querySelector(':root');
