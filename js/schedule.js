@@ -14,9 +14,7 @@ const player1 = {
 
 const hidePopup = () => {
     // Hides the popup's background
-    document
-        .querySelector(":root")
-        .style.setProperty("--popup-bg-display", "none");
+    document.querySelector(":root").style.setProperty("--popup-bg-display", "none");
 
     // Hides the popup
     document.querySelector(".popup").classList.remove("show-popup");
@@ -24,9 +22,7 @@ const hidePopup = () => {
 
 const showPopup = (content) => {
     // Shows the popup's background
-    document
-        .querySelector(":root")
-        .style.setProperty("--popup-bg-display", "block");
+    document.querySelector(":root").style.setProperty("--popup-bg-display", "block");
 
     // Shows the popup
     document.querySelector(".popup").classList.add("show-popup");
@@ -48,23 +44,23 @@ const emtpyInput = () => {
     return false;
 };
 
-const findBlock = (days) => {
-    //if true, there is repeating time block
-    let index = 0;
-    let placement = 0;
-    for (let gridItem of gridItems) {
-        if (gridItem.innerText === player1.dropDownMenu.value) {
-            for (let i of days) {
-                placement = index + i + 1;
-                if (gridItems[placement].innerText != "") {
-                    // finds a repeating block
-                    return true;
-                }
-            }
-            return false;
-        }
-    }
-};
+// const findBlock = (days) => {
+//     //if true, there is repeating time block
+//     let index = 0;
+//     let placement = 0;
+//     for (let gridItem of gridItems) {
+//         if (gridItem.innerText === player1.dropDownMenu.value) {
+//             for (let i of days) {
+//                 placement = index + i + 1;
+//                 if (gridItems[placement].innerText != "") {
+//                     // finds a repeating block
+//                     return true;
+//                 }
+//             }
+//             return false;
+//         }
+//     }
+// };
 
 submitButton.addEventListener("click", (e) => {
     // we need to check for the following:
@@ -92,21 +88,15 @@ submitButton.addEventListener("click", (e) => {
             showPopup("You are missing either course title or time"); // pop up location
             break;
         }
-        // finds the time block
 
+        // finds the time block
         if (gridItem.innerText === player1.dropDownMenu.value) {
             for (let i = 0; i < daysPicked.length; i++) {
                 placement = index + i + 1; // where the actual block is
                 if (daysPicked[i]) {
-                    if (
-                        gridItems[placement].innerText === "" ||
-                        gridItems[placement].style === ""
-                    ) {
-                        gridItems[placement].style.backgroundColor =
-                            player1.colorInput.value;
-                        gridItems[
-                            placement
-                        ].innerText = `${player1.courseInput.value}\n${player1.locationInput.value}\n${player1.professorInput.value}`;
+                    if (gridItems[placement].innerText === "") {
+                        gridItems[placement].style.backgroundColor = player1.colorInput.value;
+                        gridItems[placement].innerText = `${player1.courseInput.value}\n${player1.locationInput.value}\n${player1.professorInput.value}`;
                     } else {
                         showPopup("One of the timeblocks is being used"); // pop up location
                         break;
@@ -116,6 +106,5 @@ submitButton.addEventListener("click", (e) => {
         }
         index++;
     }
-
     document.querySelector("#add-course").reset(); //end
 });
