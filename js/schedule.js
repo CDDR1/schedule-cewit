@@ -1,62 +1,54 @@
-const daysChecked = document.querySelectorAll('.checkbox');
-const gridItems = document.getElementsByClassName('grid-item');
-const submitButton = document.getElementById('submit-form');
+const daysChecked = document.querySelectorAll(".checkbox");
+const gridItems = document.getElementsByClassName("grid-item");
+const submitButton = document.getElementById("submit-form");
 let daysPicked = [];
 let blockTakenList = [];
 
 const player1 = {
-    courseInput: document.querySelector('#courseTitle'),
-    colorInput: document.querySelector('#colorPicker'),
-    dropDownMenu: document.querySelector('#time-slots'),
-    locationInput: document.querySelector('.location-input'),
-    professorInput: document.querySelector('.professor-input'),
+    courseInput: document.querySelector("#courseTitle"),
+    colorInput: document.querySelector("#colorPicker"),
+    dropDownMenu: document.querySelector("#time-slots"),
+    locationInput: document.querySelector(".location-input"),
+    professorInput: document.querySelector(".professor-input"),
 };
 
 const hidePopup = () => {
     // Hides the popup's background
-    document.querySelector(':root').style.setProperty('--popup-bg-display', 'none');
+    document
+        .querySelector(":root")
+        .style.setProperty("--popup-bg-display", "none");
 
     // Hides the popup
-    document.querySelector('.popup').classList.remove('show-popup');
-}
-
-const showPopup = content => {
-    // Shows the popup's background
-    document.querySelector(':root').style.setProperty('--popup-bg-display', 'block');
-
-    // Shows the popup
-    document.querySelector('.popup').classList.add('show-popup');
-
-    // Populate popup's content 
-    document.querySelector('.popup-content').innerText = content;
-
-    const closePopupBtn = document.querySelector('.close-popup-btn');
-    const gotItBtn = document.querySelector('.gotit-btn');
-
-    closePopupBtn.addEventListener('click', hidePopup);
-    gotItBtn.addEventListener('click', hidePopup);
+    document.querySelector(".popup").classList.remove("show-popup");
 };
 
-function reset() {
-    for (let p of [player1]) {
-        p.courseInput.value = '';
-        p.colorInput.value = '';
-        p.locationInput.value = '';
-        p.professorInput.value = '';
-        p.dropDownMenu.value = '';
-        daysChecked.forEach((box) => (box.checked = false));
-        daysPicked = [];
-    }
-}
-function emtpyInput() {
-    if (player1.dropDownMenu.value === '' || player1.courseInput.value === '') {
-        return true;
-    } else {
-        return false;
-    }
-}
+const showPopup = (content) => {
+    // Shows the popup's background
+    document
+        .querySelector(":root")
+        .style.setProperty("--popup-bg-display", "block");
 
-function findBlock(days) {
+    // Shows the popup
+    document.querySelector(".popup").classList.add("show-popup");
+
+    // Populate popup's content
+    document.querySelector(".popup-content").innerText = content;
+
+    const closePopupBtn = document.querySelector(".close-popup-btn");
+    const gotItBtn = document.querySelector(".gotit-btn");
+
+    closePopupBtn.addEventListener("click", hidePopup);
+    gotItBtn.addEventListener("click", hidePopup);
+};
+
+const emtpyInput = () => {
+    if (player1.dropDownMenu.value === "" || player1.courseInput.value === "") {
+        return true;
+    }
+    return false;
+};
+
+const findBlock = (days) => {
     //if true, there is repeating time block
     let index = 0;
     let placement = 0;
@@ -64,7 +56,7 @@ function findBlock(days) {
         if (gridItem.innerText === player1.dropDownMenu.value) {
             for (let i of days) {
                 placement = index + i + 1;
-                if (gridItems[placement].innerText != '') {
+                if (gridItems[placement].innerText != "") {
                     // finds a repeating block
                     return true;
                 }
@@ -72,9 +64,9 @@ function findBlock(days) {
             return false;
         }
     }
-}
+};
 
-submitButton.addEventListener('click', (e) => {
+submitButton.addEventListener("click", (e) => {
     // we need to check for the following:
     //  course title
     //  time slot matches
@@ -82,42 +74,48 @@ submitButton.addEventListener('click', (e) => {
 
     e.preventDefault();
 
-  // Fill in array (daysChecked) for the days chosen.
-  daysChecked.forEach((checkbox) =>{
-    if (checkbox.checked) {
-      daysPicked.push(true);
-    }else{
-      daysPicked.push(false);
-    }
-  });
+    // Fill in array (daysChecked) for the days chosen.
+    daysChecked.forEach((checkbox) => {
+        if (checkbox.checked) {
+            daysPicked.push(true);
+        } else {
+            daysPicked.push(false);
+        }
+    });
 
-  let index = 0;
-  let placement = 0;
-  for (let gridItem of gridItems){
-    // checks for input
-    if (emtpyInput()){
-      showPopup("You are missing either course title or time"); // pop up location
-      break;
-    }
-    // finds the time block
+    let index = 0;
+    let placement = 0;
 
-    if (gridItem.innerText === player1.dropDownMenu.value) {
-      for (let i = 0; i < daysPicked.length; i++){
-        placement = index + i + 1; // where the actual block is
-        if (daysPicked[i]){ //daysPicked[i] findBlock(daysChecked) === false)
-          if(gridItems[placement].innerText === '' || gridItems[placement].style === ''){
-            gridItems[placement].style.backgroundColor = player1.colorInput.value;
-            gridItems[placement].innerText = 
-            `${player1.courseInput.value}\n${player1.locationInput.value}\n${player1.professorInput.value}`;
-          }else{
-            showPopup("One of the timeblocks is being used"); // pop up location
+    for (let gridItem of gridItems) {
+        // checks for input
+        if (emtpyInput()) {
+            showPopup("You are missing either course title or time"); // pop up location
             break;
-          }
-        } 
-      }
+        }
+        // finds the time block
+
+        if (gridItem.innerText === player1.dropDownMenu.value) {
+            for (let i = 0; i < daysPicked.length; i++) {
+                placement = index + i + 1; // where the actual block is
+                if (daysPicked[i]) {
+                    if (
+                        gridItems[placement].innerText === "" ||
+                        gridItems[placement].style === ""
+                    ) {
+                        gridItems[placement].style.backgroundColor =
+                            player1.colorInput.value;
+                        gridItems[
+                            placement
+                        ].innerText = `${player1.courseInput.value}\n${player1.locationInput.value}\n${player1.professorInput.value}`;
+                    } else {
+                        showPopup("One of the timeblocks is being used"); // pop up location
+                        break;
+                    }
+                }
+            }
+        }
+        index++;
     }
-    index++;
-  }
-  
-  reset(); //end
+
+    document.querySelector("#add-course").reset(); //end
 });

@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/CDDR1/schedule-cewit/issues"
   },
-  "homepage": "https://github.com/CDDR1/schedule-cewit#readme",
-  "devDependencies": {
-    "prettier": "2.5.1"
-  }
+  "homepage": "https://github.com/CDDR1/schedule-cewit#readme"
 }
